@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers For You 💜</title>
+
+<style>
+:root {
+  --purple: #c77dff;
+  --pink: #f15ba5;
+  --night: #100b20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: white;
+  background:
+    radial-gradient(circle at 50% 35%, #29204b 0%, transparent 42%),
+    linear-gradient(180deg, #10091c, #17172f 65%, #100b20);
+  font-family: Georgia, serif;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ffffffb8 99%, transparent),
+    radial-gradient(1.5px 1.5px at 90px 80px, #d9aaff 99%, transparent),
+    radial-gradient(2px 2px at 150px 150px, #ffffff8a 99%, transparent);
+  background-size: 180px 180px, 220px 220px, 270px 270px;
+  animation: starDrift 35s linear infinite;
+}
+
+@keyframes starDrift {
+  to { background-position: 180px 180px, -220px 220px, 270px -270px; }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  padding: 28px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(38px, 6vw, 76px);
+  line-height: 1.12;
+  font-style: italic;
+  color: #e1a5ff;
+  text-shadow: 0 0 12px #bc50ff, 0 0 36px #8724ca;
+}
+
+.subtitle {
+  margin: 13px 0 0;
+  font: 600 12px Arial, sans-serif;
+  letter-spacing: 3px;
+  color: #e8d8fa;
+  text-align: center;
+}
+
+.garden {
+  width: min(760px, 100%);
+  margin-top: 12px;
+  filter: drop-shadow(0 0 22px #a344d52a);
+}
+
+.bouquet {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.flower {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: flowerSway 4s ease-in-out infinite alternate;
+}
+
+.flower:nth-of-type(2n) {
+  animation-delay: -1.4s;
+}
+
+.flower:nth-of-type(3n) {
+  animation-delay: -2.2s;
+}
+
+@keyframes flowerSway {
+  from { rotate: -3deg; }
+  to { rotate: 3deg; }
+}
+
+.letter {
+  width: min(620px, 100%);
+  margin-top: -2px;
+  padding: 34px clamp(20px, 5vw, 48px);
+  border: 1px solid #f2c5f2;
+  border-radius: 22px;
+  color: #62405d;
+  text-align: center;
+  background: linear-gradient(145deg, #fffaff, #ffeaf5);
+  box-shadow: 0 0 35px #d76bff28, 0 12px 45px #00000035;
+}
+
+.heart {
+  color: var(--pink);
+  font-size: 30px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.letter h2 {
+  margin: 12px 0 22px;
+  color: #c34291;
+  font-size: clamp(24px, 4vw, 34px);
+}
+
+.message {
+  font: 16px/1.9 Arial, sans-serif;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.signature {
+  margin: 24px 0 18px;
+  color: #b84a96;
+  font-style: italic;
+  font-size: 17px;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 24px;
+  color: white;
+  font-size: 14px;
+  background: linear-gradient(100deg, #a63ad0, #e25ba6);
+  box-shadow: 0 5px 18px #c24be74d;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px #c24be76b;
+}
+
+.surprise {
+  display: none;
+  margin-top: 20px;
+  color: #bd3d8c;
+  font: italic 17px/1.7 Arial, sans-serif;
+}
+
+.surprise.show {
+  display: block;
+  animation: appear .7s ease both;
+}
+
+footer {
+  padding-top: 28px;
+  color: #c8b6dd;
+  font: 12px Arial, sans-serif;
+  text-align: center;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  main {
+    padding: 24px 12px 40px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .garden {
+    margin-top: 22px;
+  }
+
+  .letter {
+    padding: 27px 20px;
+  }
+
+  .message {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+
+<main>
+  <h1>Flowers For You</h1>
+  <p class="subtitle">A LITTLE GIFT FROM MY HEART 💗</p>
+
+  <div class="garden">
+    <svg class="bouquet" viewBox="0 0 760 490"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="A bouquet of glowing purple tulips">
+
+      <defs>
+        <linearGradient id="petal" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#8c36d3"/>
+          <stop offset=".25" stop-color="#c878ff"/>
+          <stop offset=".52" stop-color="#f2d8ff"/>
+          <stop offset=".76" stop-color="#c477ff"/>
+          <stop offset="1" stop-color="#8434ca"/>
+        </linearGradient>
+
+        <linearGradient id="petalSide" x1="0" y1="0" x2="1" y2=".5">
+          <stop offset="0" stop-color="#7f2bc1"/>
+          <stop offset=".5" stop-color="#c783ff"/>
+          <stop offset="1" stop-color="#9b46df"/>
+        </linearGradient>
+
+        <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#25843a"/>
+          <stop offset=".45" stop-color="#81ed5e"/>
+          <stop offset="1" stop-color="#267f35"/>
+        </linearGradient>
+
+        <linearGradient id="paper" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#8f31cb"/>
+          <stop offset=".48" stop-color="#e28aff"/>
+          <stop offset="1" stop-color="#a43ad7"/>
+        </linearGradient>
+
+        <radialGradient id="glow">
+          <stop offset="0" stop-color="#f9e5ff" stop-opacity=".8"/>
+          <stop offset="1" stop-color="#d68aff" stop-opacity="0"/>
+        </radialGradient>
+
+        <filter id="bloom" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+
+        <g id="tulip">
+          <ellipse cx="0" cy="-5" rx="40" ry="33"
+                   fill="url(#glow)" opacity=".6"/>
+
+          <g filter="url(#bloom)">
+            <path d="M-29 1
+                     C-38 -13 -28 -36 -13 -39
+                     C-6 -40 -3 -27 0 -20
+                     C4 -34 9 -43 18 -36
+                     C35 -26 37 -10 28 2
+                     C17 17 -17 17 -29 1Z"
+                  fill="url(#petalSide)"/>
+
+            <path d="M-27 0
+                     C-31 -18 -23 -39 -12 -40
+                     C-4 -39 -3 -18 -3 2
+                     C-13 13 -22 10 -27 0Z"
+                  fill="url(#petal)"/>
+
+            <path d="M-15 2
+                     C-16 -22 -10 -46 0 -47
+                     C10 -46 15 -20 13 3
+                     C7 16 -7 16 -15 2Z"
+                  fill="url(#petal)"
+                  stroke="#e9c2ff" stroke-width="1.2"/>
+
+            <path d="M1 2
+                     C-2 -22 4 -43 15 -40
+                     C28 -35 30 -11 22 3
+                     C15 14 7 13 1 2Z"
+                  fill="url(#petal)"
+                  stroke="#e3b6ff" stroke-width="1.2"/>
+
+            <path d="M13 2
+                     C15 -16 22 -32 29 -27
+                     C39 -19 35 -1 25 6
+                     C20 10 16 7 13 2Z"
+                  fill="url(#petalSide)"/>
+
+            <path d="M-8 -34 Q-3 -12 -7 3"
+                  stroke="#fff0ff" stroke-opacity=".8"
+                  stroke-width="2" fill="none"/>
+
+            <path d="M9 -33 Q16 -12 13 2"
+                  stroke="#fff0ff" stroke-opacity=".7"
+                  stroke-width="2" fill="none"/>
+
+            <ellipse cx="0" cy="4" rx="13" ry="7"
+                     fill="#efcaff" opacity=".9"/>
+          </g>
+        </g>
+
+        <g id="leaf">
+          <path d="M0 0
+                   C-17 -28 -44 -30 -55 -23
+                   C-35 -3 -14 5 0 0Z"
+                fill="url(#stem)"/>
+          <path d="M-2 -1 L-43 -22"
+                stroke="#b5ff83" stroke-width="1.3"
+                stroke-opacity=".65" fill="none"/>
+        </g>
+      </defs>
+
+      <!-- Stems: behind the wrapper and flowers -->
+      <g fill="none" stroke="url(#stem)" stroke-width="5"
+         stroke-linecap="round">
+        <path d="M380 420 Q375 280 380 90"/>
+        <path d="M350 420 Q338 290 290 130"/>
+        <path d="M405 420 Q423 285 470 130"/>
+        <path d="M320 420 Q285 300 215 175"/>
+        <path d="M435 420 Q480 300 545 175"/>
+        <path d="M365 420 Q355 310 350 175"/>
+        <path d="M395 420 Q405 310 410 175"/>
+      </g>
+
+      <!-- Leaves -->
+      <g>
+        <use href="#leaf" transform="translate(355 350) rotate(-18)"/>
+        <use href="#leaf" transform="translate(400 375) scale(-1 1) rotate(-12)"/>
+        <use href="#leaf" transform="translate(330 320) rotate(12)"/>
+        <use href="#leaf" transform="translate(430 330) scale(-1 1) rotate(8)"/>
+        <use href="#leaf" transform="translate(300 365) rotate(-28) scale(.8)"/>
+        <use href="#leaf" transform="translate(460 365) scale(-.8 .8) rotate(-25)"/>
+        <use href="#leaf" transform="translate(370 390) rotate(15) scale(.75)"/>
+        <use href="#leaf" transform="translate(410 305) scale(-.75 .75) rotate(8)"/>
+      </g>
+
+      <!-- Purple wrapper -->
+      <g>
+        <path d="M260 275 L500 275 L425 455 L380 427 L335 455 Z"
+              fill="url(#paper)"/>
+        <path d="M260 275 L380 427 L335 455 Z"
+              fill="#9230cb" opacity=".65"/>
+        <path d="M500 275 L380 427 L425 455 Z"
+              fill="#8a2bc0" opacity=".45"/>
+        <path d="M380 427 L380 452"
+              stroke="#f4baff" stroke-width="3"
+              stroke-linecap="round"/>
+      </g>
+
+      <!-- Seven individual tulips -->
+      <g class="flower" transform="translate(380 95) scale(1.12)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(290 133) scale(.98)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(470 133) scale(.98)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(215 177) scale(.87)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(325 177) scale(.9)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(435 177) scale(.9)">
+        <use href="#tulip"/>
+      </g>
+
+      <g class="flower" transform="translate(545 177) scale(.87)">
+        <use href="#tulip"/>
+      </g>
+
+      <!-- Small decorative sparkles -->
+      <g fill="#fff0ff">
+        <path d="M170 130 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3Z"/>
+        <path d="M585 105 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2Z"/>
+        <circle cx="250" cy="90" r="2"/>
+        <circle cx="510" cy="92" r="2"/>
+        <circle cx="180" cy="215" r="1.5"/>
+        <circle cx="580" cy="220" r="1.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <section class="letter">
+    <div class="heart">♥</div>
+    <h2>For You, My Love ❤️</h2>
+
+    <div class="message">i think this is the time to say my feeling, i asked for your permission to court you, i will give you all my attention and am ready to help with all your problems. i will do everything for you whether there is a chance or not I’m willing to wait for you to agree i may not be the best boy in this world but I’m sure that i will take care of you and love you no matter what. i just want you to know that i want to pursue you, i want to take the risk on you because you are worth it. i don’t care if i lose, what matters to me is that i made you feel that you are loved and important to me.
+
+let me love you with all my heart. let me give you the love you deserve with every piece of my love.</div>
+
+    <div class="signature">Forever cheering for you 💜</div>
+
+    <button id="surpriseButton" type="button">
+      Open a Little Surprise 💌
+    </button>
+
+    <div id="surprise" class="surprise">
+      You are worth every risk, every effort, and every beautiful moment. ❤️
+      <br><br>
+      I hope these flowers remind you how special you are to me. 🌷
+    </div>
+  </section>
+
+  <footer>Made with love, just for you 💜</footer>
+</main>
+
+<script>
+const button = document.getElementById("surpriseButton");
+const surprise = document.getElementById("surprise");
+
+button.addEventListener("click", () => {
+  surprise.classList.toggle("show");
+
+  button.textContent = surprise.classList.contains("show")
+    ? "Close Surprise 💗"
+    : "Open a Little Surprise 💌";
+});
+</script>
+</body>
+</html>
